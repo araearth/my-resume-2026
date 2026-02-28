@@ -137,7 +137,6 @@ body {
     color: white;
 }
 
-/* เปลี่ยนลูกศรลงในเมนูย่อยให้ใช้รูป down.png */
 .has-submenu {
     display: flex;
     align-items: center;
@@ -193,7 +192,6 @@ body {
     background: var(--secondary-color);
 }
 
-/* สไตล์สำหรับรูปภาพเมนู */
 .hamburger-btn img {
     width: 24px;
     height: 24px;
@@ -201,7 +199,7 @@ body {
     transition: transform 0.3s ease;
 }
 
-/* --- Section Container (เอฟเฟค 120% / 80%) --- */
+/* --- Section Container --- */
 .section-container {
     max-width: 830px;
     margin: 20vh auto;
@@ -327,7 +325,6 @@ body {
     align-items: flex-start;
 }
 
-/* สไตล์สำหรับรูปภาพไอคอนช่องทางการติดต่อ */
 .contact-list img.custom-icon {
     width: 20px;
     height: 20px;
@@ -508,6 +505,7 @@ body {
     font-size: 0.85rem;
     font-weight: 500;
     color: var(--primary-color);
+    word-break: break-word; /* ป้องกันตัวอักษรทะลุกรอบ */
 }
 
 /* --- Section 4: What Can I Do (Production, Developer, Teaching) --- */
@@ -538,7 +536,7 @@ body {
 
 .prod-img-wrapper {
     width: 100%;
-    aspect-ratio: 16/9; /* อัตราส่วนแบบแนวนอน */
+    aspect-ratio: 16/9; 
     overflow: hidden;
     margin-bottom: 15px;
 }
@@ -596,7 +594,7 @@ body {
     transform: scale(1.05);
 }
 
-/* --- Modal Style (กรอบลอยรองรับรูปหลายรูป) --- */
+/* --- Modal Style --- */
 .modal {
     display: none;
     position: fixed;
@@ -653,22 +651,25 @@ body {
     color: var(--primary-color);
 }
 
-/* คอนเทนเนอร์เก็บรูปใน Modal */
+/* คอนเทนเนอร์เก็บรูปใน Modal ปรับเป็นเลื่อนซ้าย-ขวา */
 .modal-img-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row; /* เปลี่ยนเป็นแนวนอน */
     gap: 15px;
     width: 100%;
-    max-height: 60vh; /* จำกัดความสูง ถ้ารูปเยอะให้ไถลงได้ */
-    overflow-y: auto;
+    max-height: 60vh; 
+    overflow-x: auto; /* เปิดให้เลื่อนแนวนอน */
+    overflow-y: hidden; /* ซ่อนการเลื่อนแนวตั้ง */
     margin-bottom: 20px;
     align-items: center;
-    padding-right: 5px; /* เผื่อพื้นที่ให้ Scrollbar */
+    padding-bottom: 15px; /* เผื่อพื้นที่ให้ Scrollbar แนวนอน */
+    scroll-snap-type: x mandatory; /* เพิ่มเอฟเฟคดูดภาพเข้ากลางจอ */
+    scroll-behavior: smooth;
 }
 
-/* ตกแต่ง Scrollbar ให้ดูเรียบเนียน */
+/* ตกแต่ง Scrollbar แนวนอน ให้ดูเรียบเนียน */
 .modal-img-container::-webkit-scrollbar {
-    width: 6px;
+    height: 8px; /* เปลี่ยนจาก width เป็น height สำหรับแนวนอน */
 }
 
 .modal-img-container::-webkit-scrollbar-thumb {
@@ -677,10 +678,13 @@ body {
 }
 
 .modal-img-container img {
+    flex: 0 0 100%; /* บังคับให้แต่ละรูปกว้างเต็มคอนเทนเนอร์ */
     max-width: 100%;
+    max-height: 60vh;
     border-radius: 8px;
     border: 1px solid #e2e8f0;
     object-fit: contain;
+    scroll-snap-align: center; /* จุดที่ดูดให้หยุด (ตรงกลาง) */
 }
 
 .modal-content h3 {
@@ -695,7 +699,10 @@ body {
     line-height: 1.6;
 }
 
-/* Responsive */
+/* =========================================
+   Responsive Design สำหรับหน้าจอมือถือ/แท็บเล็ต 
+   ========================================= */
+
 @media (max-width: 768px) {
     .lang-toggle-container {
         right: 15px;
@@ -731,6 +738,7 @@ body {
         transform: scale(1.05);
     }
     
+    /* แท็บเล็ต: ปรับ Certificate เป็น 2 คอลัมน์ */
     .cert-grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -739,14 +747,38 @@ body {
     }
 }
 
+/* หน้าจอมือถือขนาดเล็ก */
 @media (max-width: 480px) {
+    /* ปรับ Certificate เป็น 2 คอลัมน์ เล็กลง และลดช่องว่าง */
     .cert-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 10px; 
     }
+
+    /* Production แสดงแถวละ 1 อันเหมือนเดิมเพื่อให้อ่านออก */
     .prod-grid {
         grid-template-columns: 1fr;
     }
+
+    /* แก้ไขปัญหาไอคอน Programs ทะลุกรอบ โดยบังคับลดขนาดและจัดเรียง 3 คอลัมน์ */
     .program-grid {
         grid-template-columns: repeat(3, 1fr);
+        gap: 10px; /* ลดช่องว่างระหว่างกรอบ */
+    }
+    
+    .program-item {
+        padding: 10px 5px; /* ลดกรอบแพดดิ้ง */
+    }
+
+    .program-item img {
+        width: 35px; /* ลดขนาดไอคอนลง */
+        height: 35px;
+        margin-bottom: 8px;
+    }
+
+    .program-item span {
+        font-size: 0.7rem; /* ลดขนาดตัวหนังสือ */
+        line-height: 1.2;
+        word-break: break-word; /* บังคับตัดคำถ้าชื่อยาวเกินกรอบ */
     }
 }
