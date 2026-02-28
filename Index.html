@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Resume</title>
+    
+    <!-- นำเข้าฟอนต์ Prompt -->
+    <link rel="preconnect" href="[https://fonts.googleapis.com](https://fonts.googleapis.com)">
+    <link rel="preconnect" href="[https://fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
+    <link href="[https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap](https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap)" rel="stylesheet">
+    
+    <!-- นำเข้า Font Awesome สำหรับไอคอน (ยังเก็บไว้สำหรับเมนูอื่นๆ ที่ไม่ได้เปลี่ยน) -->
+    <link rel="stylesheet" href="[https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css)">
+
+    <!-- นำเข้าไฟล์ CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ปุ่มสลับภาษา -->
+    <div class="lang-toggle-container">
+        <button id="langToggleBtn" class="lang-toggle-btn" onclick="toggleLanguage()">TH</button>
+    </div>
+
+    <!-- ปุ่ม Hamburger -->
+    <button class="hamburger-btn" onclick="toggleSidebar()">
+        <!-- เปลี่ยนเป็นรูป menus.png -->
+        <img src="Icon/menus.png" alt="Menu" id="menuIcon">
+    </button>
+
+    <!-- Sidebar Menu -->
+    <nav class="sidebar" id="sidebar">
+        <div style="text-align: center; margin-bottom: 30px;">
+            <h2 style="font-weight: 600; letter-spacing: 1px;">MY RESUME</h2>
+        </div>
+        <ul class="menu-list">
+            <li class="menu-item">
+                <a href="#about" class="menu-link active">
+                    <i class="fas fa-user icon"></i> 
+                    <span class="lang-en">About Me</span>
+                    <span class="lang-th hidden">ประวัติส่วนตัว</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#education" class="menu-link">
+                    <i class="fas fa-graduation-cap icon"></i> 
+                    <span class="lang-en">Education</span>
+                    <span class="lang-th hidden">ประวัติการศึกษา</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#experience" class="menu-link">
+                    <i class="fas fa-briefcase icon"></i> 
+                    <span class="lang-en">Work Experience</span>
+                    <span class="lang-th hidden">ประวัติการทำงาน</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <!-- เพิ่ม href="#whatido" เข้าไปเพื่อให้ระบบตรวจจับหาเจอ -->
+                <a href="#whatido" class="menu-link has-submenu" onclick="toggleSubmenu(event, 'skillsMenu')">
+                    <i class="fas fa-laptop-code icon"></i> 
+                    <span class="lang-en">What Can I Do</span>
+                    <span class="lang-th hidden">ทักษะความสามารถ</span>
+                </a>
+                <ul class="sub-menu" id="skillsMenu">
+                    <li><a href="#programs">- Programs</a></li>
+                    <li><a href="#prod">- Production</a></li>
+                    <li><a href="#dev">- Developer</a></li>
+                    <li><a href="#teach">- Teaching</a></li>
+                </ul>
+            </li>
+            <li class="menu-item">
+                <a href="#certificate" class="menu-link">
+                    <i class="fas fa-certificate icon"></i> 
+                    <span class="lang-en">Certificate</span>
+                    <span class="lang-th hidden">ประกาศนียบัตร</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content" id="mainContent">
+        
+        <!-- Section 1: About Me -->
+        <section id="about" class="section-container">
+            <h1 class="section-title">
+                <span class="lang-en">About Me</span>
+                <span class="lang-th hidden">ประวัติส่วนตัว</span>
+            </h1>
+            
+            <div class="about-grid">
+                <div class="left-column">
+                    <div class="profile-wrapper">
+                        <img src="Image/profile.jpg" alt="Profile Picture">
+                    </div>
+                </div>
+
+                <div class="info-wrapper">
+                    <div class="info-header">
+                        <h1>Thanadol Notnanum</h1>
+                        <h2>ธนาดล นนทะนำ</h2> <!-- คงภาษาไทยไว้ตามที่ต้องการ -->
+                        <h3>
+                            <span class="lang-en">(Earth)</span>
+                            <span class="lang-th hidden">(เอิร์ธ)</span>
+                        </h3>
+                    </div>
+
+                    <ul class="info-list">
+                        <li class="info-item">
+                            <span class="label">
+                                <span class="lang-en">Age:</span>
+                                <span class="lang-th hidden">อายุ:</span>
+                            </span> 
+                            <span class="lang-en">27 Years</span>
+                            <span class="lang-th hidden">27 ปี</span>
+                        </li>
+                        <li class="info-item">
+                            <span class="label">
+                                <span class="lang-en">DOB:</span>
+                                <span class="lang-th hidden">วันเกิด:</span>
+                            </span> 
+                            <span class="lang-en">1 Mar 1999</span>
+                            <span class="lang-th hidden">1 มี.ค. 2542</span>
+                        </li>
+                    </ul>
+
+                    <div class="contact-box">
+                        <h4>
+                            <span class="lang-en">Contact Info</span>
+                            <span class="lang-th hidden">ช่องทางการติดต่อ</span>
+                        </h4>
+                        <ul class="contact-list">
+                            <li>
+                                <img src="Icon/phone.png" alt="Phone" class="custom-icon" onerror="this.src='[https://via.placeholder.com/20?text=P](https://via.placeholder.com/20?text=P)'">
+                                <span>081-245-7314</span>
+                            </li>
+                            <li>
+                                <img src="Icon/email.png" alt="Email" class="custom-icon" onerror="this.src='[https://via.placeholder.com/20?text=E](https://via.placeholder.com/20?text=E)'">
+                                <span>t.notnanum@gmail.com</span>
+                            </li>
+                            <li>
+                                <img src="Icon/home.png" alt="Address" class="custom-icon" onerror="this.src='[https://via.placeholder.com/20?text=H](https://via.placeholder.com/20?text=H)'">
+                                <span>
+                                    <span class="lang-en">P.S.T. Condo Tower 1<br>Chong Nonsi, Yan Nawa, Bangkok</span>
+                                    <span class="lang-th hidden">P.S.T. Condo Tower 1<br>แขวงช่องนนทรี เขตยานนาวา กรุงเทพมหานคร</span>
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="language-skills">
+                <h3 class="subsection-title">
+                    <span class="lang-en">Language Skills</span>
+                    <span class="lang-th hidden">ทักษะทางภาษา (Language Skills)</span>
+                </h3>
+                <div class="table-responsive">
+                    <table class="skills-table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <span class="lang-en">Language</span>
+                                    <span class="lang-th hidden">ภาษา</span>
+                                </th>
+                                <th>
+                                    <span class="lang-en">Speaking</span>
+                                    <span class="lang-th hidden">พูด</span>
+                                </th>
+                                <th>
+                                    <span class="lang-en">Listening</span>
+                                    <span class="lang-th hidden">เข้าใจ</span>
+                                </th>
+                                <th>
+                                    <span class="lang-en">Reading</span>
+                                    <span class="lang-th hidden">อ่าน</span>
+                                </th>
+                                <th>
+                                    <span class="lang-en">Writing</span>
+                                    <span class="lang-th hidden">เขียน</span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <span class="lang-en">Thai</span>
+                                    <span class="lang-th hidden">ไทย</span>
+                                </td>
+                                <td>
+                                    <span class="lang-en">Excellent</span>
+                                    <span class="lang-th hidden">ดีมาก</span>
+                                </td>
+                                <td>
+                                    <span class="lang-en">Excellent</span>
+                                    <span class="lang-th hidden">ดีมาก</span>
+                                </td>
+                                <td>
+                                    <span class="lang-en">Excellent</span>
+                                    <span class="lang-th hidden">ดีมาก</span>
+                                </td>
+                                <td>
+                                    <span class="lang-en">Excellent</span>
+                                    <span class="lang-th hidden">ดีมาก</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="lang-en">English</span>
+                                    <span class="lang-th hidden">อังกฤษ</span>
+                                </td>
+                                <td>
+                                    <span class="lang-en">Good</span>
+                                    <span class="lang-th hidden">ดี</span>
+                                </td>
+                                <td>
+                                    <span class="lang-en">Good</span>
+                                    <span class="lang-th hidden">ดี</span>
+                                </td>
+                                <td>
+                                    <span class="lang-en">Good</span>
+                                    <span class="lang-th hidden">ดี</span>
+                                </td>
+                                <td>
+                                    <span class="lang-en">Fair</span>
+                                    <span class="lang-th hidden">พอใช้</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Education -->
+        <section id="education" class="section-container">
+            <h1 class="section-title">
+                <span class="lang-en">Education</span>
+                <span class="lang-th hidden">ประวัติการศึกษา</span>
+            </h1>
+            <div class="education-item">
+                <div class="edu-year">2561 - 2565</div>
+                <div class="edu-details">
+                    <h3>
+                        <span class="lang-en">Bachelor's Degree</span>
+                        <span class="lang-th hidden">ระดับปริญญาตรี</span>
+                    </h3>
+                    <h4>
+                        <span class="lang-en">King Mongkut's University of Technology Thonburi</span>
+                        <span class="lang-th hidden">มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี</span>
+                    </h4>
+                    <p class="edu-faculty">
+                        <span class="lang-en">School of Architecture and Design<br>Media Technology, Major in Game Development</span>
+                        <span class="lang-th hidden">คณะสถาปัตยกรรมศาสตร์และการออกแบบ<br>สาขาวิชาเทคโนโลยีมีเดีย เอกการพัฒนาเกม</span>
+                    </p>
+                    <span class="edu-gpa">
+                        <span class="lang-en">GPA 2.82</span>
+                        <span class="lang-th hidden">เกรดเฉลี่ย 2.82</span>
+                    </span>
+                </div>
+            </div>
+            <div class="education-item">
+                <div class="edu-year">2554 - 2560</div>
+                <div class="edu-details">
+                    <h3>
+                        <span class="lang-en">High School</span>
+                        <span class="lang-th hidden">ระดับมัธยมศึกษา</span>
+                    </h3>
+                    <h4>
+                        <span class="lang-en">Bangpakok Wittayakom School</span>
+                        <span class="lang-th hidden">โรงเรียนบางปะกอกวิทยาคม</span>
+                    </h4>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Work Experience -->
+        <section id="experience" class="section-container">
+            <h1 class="section-title">
+                <span class="lang-en">Work Experience</span>
+                <span class="lang-th hidden">ประวัติการทำงาน</span>
+            </h1>
+            
+            <div class="education-item">
+                <div class="edu-year">
+                    2565 - <span class="lang-en">Present</span><span class="lang-th hidden">ปัจจุบัน</span>
+                </div>
+                <div class="edu-details">
+                    <h3>
+                        <span class="lang-en">Audio-Visual Support Teacher / IT Support</span>
+                        <span class="lang-th hidden">ครูสนับสนุน ฝ่ายโสตทัศนศึกษา / IT Support</span>
+                    </h3>
+                    <h4>
+                        <span class="lang-en">Sarasas Ektra School</span>
+                        <span class="lang-th hidden">โรงเรียนสารสาสน์เอกตรา</span>
+                    </h4>
+                    <ul class="work-list">
+                        <li>
+                            <span class="lang-en">Taught in club activities and provided evening tutoring.</span>
+                            <span class="lang-th hidden">สอนในวิชาชมรม และสอนพิเศษนักเรียนช่วงเย็น</span>
+                        </li>
+                        <li>
+                            <span class="lang-en">Supported maintenance of computer hardware, IT equipment, and various systems.</span>
+                            <span class="lang-th hidden">สนับสนุนงานซ่อมบำรุงอุปกรณ์คอม ไอที และ ระบบต่างๆ</span>
+                        </li>
+                        <li>
+                            <span class="lang-en">Supported school activities and events.</span>
+                            <span class="lang-th hidden">สนับสนุนและซัพพอร์ตงานกิจกรรมของโรงเรียน</span>
+                        </li>
+                        <li>
+                            <span class="lang-en">Designed and developed software applications for school use.</span>
+                            <span class="lang-th hidden">ออกแบบและพัฒนาโปรแกรมสำหรับใช้ในโรงเรียน</span>
+                        </li>
+                        <li>
+                            <span class="lang-en">Recorded and edited videos for school events.</span>
+                            <span class="lang-th hidden">ถ่ายวิดีโอและตัดต่อ งานกิจกรรมต่างๆของโรงเรียน</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="education-item">
+                <div class="edu-year">2565 - 2565</div>
+                <div class="edu-details">
+                    <h3>Microsoft Pre-Sales</h3>
+                    <h4>
+                        <span class="lang-en">SVOA Public Company Limited</span>
+                        <span class="lang-th hidden">บริษัท เอสวีโอเอ จำกัด (มหาชน)</span>
+                    </h4>
+                    <ul class="work-list">
+                        <li>
+                            <span class="lang-en">Provided information on various Microsoft plans and offered after-sales support to clients.</span>
+                            <span class="lang-th hidden">ทำหน้าที่ให้ข้อมูลเกี่ยวกับแผนแต่ละแบบของ microsoft และคอยซัพพอร์ตหลังการขายให้ลูกค้า</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ประสบการณ์ใหม่ที่เพิ่มเข้ามา -->
+            <div class="education-item">
+                <div class="edu-year">2564 - 2564</div>
+                <div class="edu-details">
+                    <h3>
+                        <span class="lang-en">Graphic Designer (Intern)</span>
+                        <span class="lang-th hidden">Graphic Designer (ฝึกงาน)</span>
+                    </h3>
+                    <h4>
+                        <span class="lang-en">Minor Corporation Public Company Limited</span>
+                        <span class="lang-th hidden">บริษัท ไมเนอร์ คอร์ปอเรชั่น จำกัด (มหาชน)</span>
+                    </h4>
+                    <ul class="work-list">
+                        <li>
+                            <span class="lang-en">Designed graphic media for marketing campaigns.</span>
+                            <span class="lang-th hidden">ออกแบบสื่อกราฟิกสำหรับแคมเปญการตลาด</span>
+                        </li>
+                        <li>
+                            <span class="lang-en">Assisted in creating content for social media platforms.</span>
+                            <span class="lang-th hidden">ช่วยสร้างสรรค์เนื้อหาสำหรับโซเชียลมีเดีย</span>
+                        </li>
+                        <li>
+                            <span class="lang-en">Developed games to promote the company's products.</span>
+                            <span class="lang-th hidden">พัฒนาเกมสำหรับส่งเสริมผลิตภัณฑ์ของบริษัท</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: What Can I Do -->
+        <section id="whatido" class="section-container">
+            <h1 class="section-title">
+                <span class="lang-en">What Can I Do</span>
+                <span class="lang-th hidden">ทักษะความสามารถ (What Can I Do)</span>
+            </h1>
+            
+            <!-- หัวข้อย่อย Programs -->
+            <div id="programs" class="skill-category">
+                <h3 class="subsection-title"><i class="fas fa-layer-group"></i> Programs</h3>
+                <div class="program-grid">
+                    <div class="program-item">
+                        <img src="Logo/office365.png" alt="Office 365" onerror="this.src='[https://via.placeholder.com/80?text=O365](https://via.placeholder.com/80?text=O365)'">
+                        <span>Office 365</span>
+                    </div>
+                    <div class="program-item">
+                        <img src="Logo/appscripts.png" alt="App Scripts" onerror="this.src='[https://via.placeholder.com/80?text=Apps](https://via.placeholder.com/80?text=Apps)'">
+                        <span>App Scripts</span>
+                    </div>
+                    <div class="program-item">
+                        <img src="Logo/arduino.png" alt="Arduino IDE" onerror="this.src='[https://via.placeholder.com/80?text=Arduino](https://via.placeholder.com/80?text=Arduino)'">
+                        <span>Arduino IDE</span>
+                    </div>
+                    <div class="program-item">
+                        <img src="Logo/python.png" alt="Python" onerror="this.src='[https://via.placeholder.com/80?text=Python](https://via.placeholder.com/80?text=Python)'">
+                        <span>Python</span>
+                    </div>
+                    <div class="program-item">
+                        <img src="Logo/vegas.png" alt="Vegas Pro" onerror="this.src='[https://via.placeholder.com/80?text=Vegas](https://via.placeholder.com/80?text=Vegas)'">
+                        <span>Vegas Pro</span>
+                    </div>
+                    <div class="program-item">
+                        <img src="Logo/canva.png" alt="Canva" onerror="this.src='[https://via.placeholder.com/80?text=Canva](https://via.placeholder.com/80?text=Canva)'">
+                        <span>Canva</span>
+                    </div>
+                    <div class="program-item">
+                        <img src="Logo/unity.png" alt="Unity" onerror="this.src='[https://via.placeholder.com/80?text=Unity](https://via.placeholder.com/80?text=Unity)'">
+                        <span>Unity</span>
+                    </div>
+                    <div class="program-item">
+                        <img src="Logo/obs.png" alt="OBS" onerror="this.src='[https://via.placeholder.com/80?text=OBS](https://via.placeholder.com/80?text=OBS)'">
+                        <span>OBS</span>
+                    </div>
+                    <div class="program-item">
+                        <img src="Logo/ai.png" alt="Illustrator" onerror="this.src='[https://via.placeholder.com/80?text=Illustrator](https://via.placeholder.com/80?text=Illustrator)'">
+                        <span>Illustrator</span>
+                    </div>
+                    <div class="program-item">
+                        <img src="Logo/psd.png" alt="Photoshop" onerror="this.src='[https://via.placeholder.com/80?text=Photoshop](https://via.placeholder.com/80?text=Photoshop)'">
+                        <span>Photoshop</span>
+                    </div>
+                    <div class="program-item">
+                        <img src="Logo/gemini.png" alt="Gemini" onerror="this.src='[https://via.placeholder.com/80?text=Gemini](https://via.placeholder.com/80?text=Gemini)'">
+                        <span>Gemini</span>
+                    </div>
+                    <div class="program-item">
+                        <img src="Logo/gpt.png" alt="gpt" onerror="this.src='[https://via.placeholder.com/80?text=GPT](https://via.placeholder.com/80?text=GPT)'">
+                        <span>Chat GPT</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- หัวข้อย่อย Production -->
+            <div id="prod" class="skill-category" style="margin-top: 50px;">
+                <h3 class="subsection-title"><i class="fas fa-video"></i> Production</h3>
+                <div class="prod-grid">
+                    <div class="prod-item" onclick="openModal('Image/live.png', 'Capable of setting up streaming systems for internal live events, including multi-camera switching and integrating various graphics.', 'สามารถจัดทำระบบ Streaming สำหรับถ่ายทอดสดงานกิจกรรมภายใน รวมถึงการสับเปลี่ยนมุมกล้องและการใส่กราฟิกต่างๆ')">
+                        <div class="prod-img-wrapper">
+                            <img src="Image/live.png" alt="Streaming" onerror="this.src='[https://via.placeholder.com/400x300?text=Live+Streaming](https://via.placeholder.com/400x300?text=Live+Streaming)'">
+                        </div>
+                        <h4>Streaming</h4>
+                    </div>
+                    <div class="prod-item" onclick="openModal('Image/editing.png', 'Proficient in video editing using Vegas Pro, including sequencing, adding effects, and overlaying images.', 'สามารถตัดต่อวิดีโอด้วยโปรแกรม Vegas Pro ได้อย่างคล่องแคล่ว ไม่ว่าจะเป็นการลำดับภาพ ใส่เอฟเฟค ซ้อนภาพ')">
+                        <div class="prod-img-wrapper">
+                            <img src="Image/editing.png" alt="VDO Editing" onerror="this.src='[https://via.placeholder.com/400x300?text=VDO+Editing](https://via.placeholder.com/400x300?text=VDO+Editing)'">
+                        </div>
+                        <h4>VDO Editing</h4>
+                    </div>
+                    <div class="prod-item" onclick="openModal('Image/vdo.jpg', 'Knowledgeable in camera angles, videography, and recording event footage for corporate communication or further editing processes.', 'มีความรู้ในการจัดมุมกล้อง ถ่ายวิดีโอและเก็บบันทึกภาพงานกิจกรรมต่างๆ เพื่อนำไปใช้งานด้านสื่อสารองค์กร หรือต่อยอดในกระบวนการตัดต่อต่อไป')">
+                        <div class="prod-img-wrapper">
+                            <img src="Image/vdo.jpg" alt="VDO Taking" onerror="this.src='[https://via.placeholder.com/400x300?text=VDO+Taking](https://via.placeholder.com/400x300?text=VDO+Taking)'">
+                        </div>
+                        <h4>VDO Taking</h4>
+                    </div>
+                </div>
+            </div>
+
+            <!-- หัวข้อย่อย Developer -->
+            <div id="dev" class="skill-category" style="margin-top: 50px;">
+                <h3 class="subsection-title"><i class="fas fa-code"></i> Developer</h3>
+                <div class="prod-grid">
+                    <div class="prod-item" onclick="openModal(['Image/fix2.png', 'Image/fix1.png'], 'Maintenance Management System (Repair Jobs)', 'ระบบจัดการงานซ่อมบำรุง (Repair Jobs)')">
+                        <div class="prod-img-wrapper">
+                            <img src="Image/fix2.png" alt="Repair Jobs" onerror="this.src='[https://via.placeholder.com/400x300?text=Repair+Jobs](https://via.placeholder.com/400x300?text=Repair+Jobs)'">
+                        </div>
+                        <h4>Repair Jobs</h4>
+                    </div>
+                    
+                    <div class="prod-item" onclick="openModal(['Image/park1.png', 'Image/park2.png'], 'Parking Management System', 'ระบบจัดการลานจอดรถ (Parking System)')">
+                        <div class="prod-img-wrapper">
+                            <img src="Image/park1.png" alt="Parking System" onerror="this.src='[https://via.placeholder.com/400x300?text=Parking+System](https://via.placeholder.com/400x300?text=Parking+System)'">
+                        </div>
+                        <h4>Parking System</h4>
+                    </div>
+
+                    <div class="prod-item" onclick="openModal('Image/score.png', 'Score Typing Program (Score Typer)', 'โปรแกรมพิมพ์คะแนน (Score Typer)')">
+                        <div class="prod-img-wrapper">
+                            <img src="Image/score.png" alt="Score Typer" onerror="this.src='[https://via.placeholder.com/400x300?text=Score+Typer](https://via.placeholder.com/400x300?text=Score+Typer)'">
+                        </div>
+                        <h4>Score Typer</h4>
+                    </div>
+                </div>
+            </div>
+
+            <!-- หัวข้อย่อย Teaching -->
+            <div id="teach" class="skill-category" style="margin-top: 50px;">
+                <h3 class="subsection-title"><i class="fas fa-chalkboard-teacher"></i> Teaching</h3>
+                <div class="prod-grid">
+                    <!-- ใบที่ 1: C Language -->
+                    <div class="prod-item" onclick="openModal('Image/teach1.png', 'Managed and taught C programming for Y.7-8 students and organized a debugging competition during Science Week.', 'จัดการเรียนการสอนนักเรียนระดับชั้น Y.7-8 ในภาษา C และจัดการแข่งขัน Debugging ในงานสัปดาห์วิทยาศาสตร์')">
+                        <div class="prod-img-wrapper">
+                            <img src="Image/teach1.png" alt="C Language" onerror="this.src='[https://via.placeholder.com/400x300?text=C+Language](https://via.placeholder.com/400x300?text=C+Language)'">
+                        </div>
+                        <h4>C Language</h4>
+                    </div>
+                    
+                    <!-- ใบที่ 2: Arduino & IOT -->
+                    <div class="prod-item" onclick="openModal('Image/iot.png', 'Taught basic usage of Arduino boards and Internet of Things (IoT) fundamentals.', 'สอนเกี่ยวกับการใช้งานบอร์ด Arduino และพื้นฐานระบบ IOT เบื้องต้น')">
+                        <div class="prod-img-wrapper">
+                            <img src="Image/iot.png" alt="Arduino & IOT" onerror="this.src='[https://via.placeholder.com/400x300?text=Arduino+%26+IOT](https://via.placeholder.com/400x300?text=Arduino+%26+IOT)'">
+                        </div>
+                        <h4>Arduino & IOT</h4>
+                    </div>
+
+                    <!-- ใบที่ 3: Gamemaker -->
+                    <div class="prod-item" onclick="openModal('Image/teach2.png', 'Taught Y.6 students to create games using GameMaker in the MI (Multiple Intelligences) club.', 'สอนนักเรียนระดับ Y.6 สร้างเกมด้วยโปรแกรม GameMaker ในวิชา MI(ชมรม)')">
+                        <div class="prod-img-wrapper">
+                            <img src="Image/teach2.png" alt="Gamemaker" onerror="this.src='[https://via.placeholder.com/400x300?text=Gamemaker](https://via.placeholder.com/400x300?text=Gamemaker)'">
+                        </div>
+                        <h4>Gamemaker</h4>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+
+        <!-- Section 5: Certificate -->
+        <section id="certificate" class="section-container">
+            <h1 class="section-title">
+                <span class="lang-en">Certificate</span>
+                <span class="lang-th hidden">ประกาศนียบัตร</span>
+            </h1>
+            
+            <div class="cert-grid">
+                <div class="cert-item" onclick="openModal('Certificate/cert1.png', 'Certificate of Basic C Language for IoT Training', 'ใบประกาศนียบัตรอบรมหลักสูตรภาษา C for IOT เบื้องต้น')">
+                    <img src="Certificate/cert1.png" alt="Certificate 1" onerror="this.src='[https://via.placeholder.com/400x300?text=Cert+1](https://via.placeholder.com/400x300?text=Cert+1)'">
+                </div>
+                <div class="cert-item" onclick="openModal('Certificate/cert2.png', 'Certificate of Basic Cybersecurity Training', 'ใบประกาศนียบัตรอบรมหลักสูตร Basic Cybersecurity')">
+                    <img src="Certificate/cert2.png" alt="Certificate 2" onerror="this.src='[https://via.placeholder.com/400x300?text=Cert+2](https://via.placeholder.com/400x300?text=Cert+2)'">
+                </div>
+                <div class="cert-item" onclick="openModal('Certificate/cert3.png', 'Certificate of Participation in Python Coding Camp for High School', 'ใบประกาศนียบัตรเข้าร่วมค่ายการเรียนรู้โค้ดดิ้งในภาษา Python ระดับมัธยมศึกษา')">
+                    <img src="Certificate/cert3.png" alt="Certificate 3" onerror="this.src='[https://via.placeholder.com/400x300?text=Cert+3](https://via.placeholder.com/400x300?text=Cert+3)'">
+                </div>
+                <div class="cert-item" onclick="openModal('Certificate/cert4.png', 'Certificate of Participation in Artificial Intelligence (AI) for Education Training', 'ใบประกาศนียบัตรเข้าร่วมการอบรมเรื่องการใช้ปัญญาประดิษฐ์ (AI) ในงานด้านการศึกษา')">
+                    <img src="Certificate/cert4.png" alt="Certificate 4" onerror="this.src='[https://via.placeholder.com/400x300?text=Cert+4](https://via.placeholder.com/400x300?text=Cert+4)'">
+                </div>
+                <div class="cert-item" onclick="openModal('Certificate/cert5.png', 'Certificate of Participation in Coding with Reka:bit Board Training', 'ใบประกาศนียบัตรเข้าร่วมการอบรมเรื่องการเขียนโค้ดดิ้ง พร้อมกับบอร์ด Reka:bit')">
+                    <img src="Certificate/cert5.png" alt="Certificate 5" onerror="this.src='[https://via.placeholder.com/400x300?text=Cert+5](https://via.placeholder.com/400x300?text=Cert+5)'">
+                </div>
+                <div class="cert-item" onclick="openModal('Certificate/cert6.png', 'Certificate of Appreciation for Submitting Students to the Sarasas Affiliated Schools Robotics Competition', 'ใบประกาศนียบัตรสำหรับการส่งนักเรียนเข้าร่วมการแข่งขันหุ่นยนต์ภายในเครือโรงเรียนสารสาสน์')">
+                    <img src="Certificate/cert6.png" alt="Certificate 6" onerror="this.src='[https://via.placeholder.com/400x300?text=Cert+6](https://via.placeholder.com/400x300?text=Cert+6)'">
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Modal สำหรับดูรายละเอียดแบบหน้าต่างลอย -->
+    <div id="certModal" class="modal">
+        <div class="modal-content">
+            <!-- ปุ่มกากบาทปิด Modal -->
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <!-- คอนเทนเนอร์สำหรับรูปภาพ (รองรับทีละหลายรูป) -->
+            <div id="modalImgContainer" class="modal-img-container"></div>
+            <!-- ข้อความรายละเอียด -->
+            <h3 id="modalTitle">
+                <span class="lang-en">Details</span>
+                <span class="lang-th hidden">รายละเอียด</span>
+            </h3>
+            <p>
+                <span id="modalDescEn" class="lang-en"></span>
+                <span id="modalDescTh" class="lang-th hidden"></span>
+            </p>
+        </div>
+    </div>
+
+    <!-- นำเข้าไฟล์ JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
